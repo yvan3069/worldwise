@@ -3,12 +3,13 @@ import styles from "./CityList.module.css";
 import Spinner from "./Spinner";
 import PropTypes from "prop-types";
 import Message from "./Message";
+import { useCities } from "../contexts/CitiesContext";
 
-function CityList({ isLoading, cities }) {
+function CityList() {
+  const { isLoading, cities } = useCities();
   if (isLoading) return <Spinner />;
 
   if (cities.length === 0) return <Message message="No cities found" />;
-
   return (
     <ul className={styles.cityList}>
       {cities.map((city) => (

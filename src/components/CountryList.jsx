@@ -3,6 +3,7 @@ import styles from "./CountryList.module.css";
 import Spinner from "./Spinner";
 import PropTypes from "prop-types";
 import Message from "./Message";
+import { useCities } from "../contexts/CitiesContext";
 
 //去重countries,需要修改
 // const countries = cities.reduce((acc, city) => {
@@ -12,7 +13,9 @@ import Message from "./Message";
 //   return acc;
 // }, []);
 
-function CountryList({ isLoading, cities }) {
+function CountryList() {
+  const { isLoading, cities } = useCities();
+
   if (isLoading) return <Spinner />;
 
   if (cities.length === 0) return <Message message="No cities found" />;
