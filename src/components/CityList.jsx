@@ -8,6 +8,7 @@ import { useCities } from "../contexts/CitiesContext";
 function CityList() {
   const { isLoading, cities } = useCities();
   if (isLoading) return <Spinner />;
+  // console.log(cities);
 
   if (cities.length === 0) return <Message message="No cities found" />;
   return (

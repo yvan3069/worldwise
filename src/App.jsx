@@ -12,30 +12,41 @@ import CountryList from "./components/CountryList";
 import City from "./components/City";
 import Form from "./components/Form";
 import { CityProvider } from "./contexts/CitiesContext";
+import { AuthProvider } from "./contexts/FakeAuthContext";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 function App() {
   return (
-    <CityProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="pricing" element={<Pricing />} />
-          <Route path="product" element={<Product />} />
-          <Route path="app" element={<AppLayout />}>
+    <AuthProvider>
+      <CityProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="pricing" element={<Pricing />} />
+            <Route path="product" element={<Product />} />
             <Route
-              index
-              element={<Navigate to="cities" replace={true} />}
-            ></Route>
-            <Route path="cities" element={<CityList />}></Route>
-            <Route path="cities/:cityId" element={<City />}></Route>
-            <Route path="countries" element={<CountryList />}></Route>
-            <Route path="form" element={<Form />}></Route>
-          </Route>
-          <Route path="login" element={<Login />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </CityProvider>
+              path="app"
+              element={
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route
+                index
+                element={<Navigate to="cities" replace={true} />}
+              ></Route>
+              <Route path="cities" element={<CityList />}></Route>
+              <Route path="cities/:cityId" element={<City />}></Route>
+              <Route path="countries" element={<CountryList />}></Route>
+              <Route path="form" element={<Form />}></Route>
+            </Route>
+            <Route path="login" element={<Login />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </CityProvider>
+    </AuthProvider>
   );
 }
 
