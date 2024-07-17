@@ -34,7 +34,7 @@ function City() {
 
   useEffect(() => {
     getCity(cityId);
-  }, [cityId]);
+  }, [cityId, getCity]);
   if (isLoading) return <Spinner />;
   return (
     <div className={styles.city}>

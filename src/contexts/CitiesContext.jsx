@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useReducer,
+} from "react";
 import PropTypes from "prop-types";
 
 const CityContext = createContext();
@@ -65,7 +71,7 @@ function CityProvider({ children }) {
     fetchCities();
   }, []);
 
-  async function getCity(id) {
+  const getCity = useCallback(async function getCity(id) {
     try {
       // setIsLoading(true);
       dispatch({ type: "isLoading" });
@@ -77,7 +83,7 @@ function CityProvider({ children }) {
       // console.log("there is an error when loading");
       dispatch({ type: "error", payload: "There is an error when loading" }); // dispatch action
     }
-  }
+  }, []);
   async function createCity(newCity) {
     try {
       // setIsLoading(true);
