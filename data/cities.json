@@ -59,6 +59,18 @@
         "lat": "47.78672179226901",
         "lng": "3.09814453125"
       }
+    },
+    {
+      "id": "0839",
+      "cityName": "Haselbachtal",
+      "country": "Europe",
+      "emoji": "🇩🇪",
+      "date": "2024-07-21T14:37:46.892Z",
+      "notes": "I was really exited",
+      "position": {
+        "lat": "51.24262317408393",
+        "lng": "14.062500000000002"
+      }
     }
   ]
 }

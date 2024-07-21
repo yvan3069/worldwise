@@ -52,7 +52,7 @@ function CityProvider({ children }) {
     initialState
   );
 
-  const BASE_URL = "http://localhost:9000";
+  const BASE_URL = "https://worldwise-coral.vercel.app";
 
   useEffect(() => {
     async function fetchCities() {

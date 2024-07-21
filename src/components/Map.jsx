@@ -63,7 +63,7 @@ function Map() {
               key={city.id}
             >
               <Popup onClick={() => {}}>
-                <span>{city.emoji}</span> <span>{city.cityName}</span>
+                <span>{city.emoji}</span> <span>{city.notes}</span>
               </Popup>
             </Marker>
           );
